@@ -6,7 +6,9 @@ export const getPosts = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
 
     try {
-      const response = await fetch("http://localhost:5005/posts");
+      const response = await fetch(
+        "https://my-json-server.typicode.com/DanaMedany/crud-redux-router-json-server/posts"
+      );
       const data = await response.json();
       return data;
     } catch (error) {
@@ -21,7 +23,9 @@ export const detailPost = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
 
     try {
-      const response = await fetch(`http://localhost:5005/posts/${id}`);
+      const response = await fetch(
+        `https://my-json-server.typicode.com/DanaMedany/crud-redux-router-json-server/posts${id}`
+      );
       const data = await response.json();
       return data;
     } catch (error) {
@@ -35,9 +39,12 @@ export const deletePost = createAsyncThunk(
   async (id, ThunkAPI) => {
     const { rejectWithValue } = ThunkAPI;
     try {
-      await fetch(`http://localhost:5005/posts/${id}`, {
-        method: "DELETE",
-      });
+      await fetch(
+        `https://my-json-server.typicode.com/DanaMedany/crud-redux-router-json-server/posts${id}`,
+        {
+          method: "DELETE",
+        }
+      );
       return id;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -53,13 +60,16 @@ export const insertPost = createAsyncThunk(
     element.creator = auth.creator;
     element.id = JSON.stringify(element.id);
     try {
-      const response = await fetch("http://localhost:5005/posts", {
-        method: "POST",
-        body: JSON.stringify(element),
-        headers: {
-          "Content-Type": "application/json; charset= UTF-8",
-        },
-      });
+      const response = await fetch(
+        "https://my-json-server.typicode.com/DanaMedany/crud-redux-router-json-server/posts",
+        {
+          method: "POST",
+          body: JSON.stringify(element),
+          headers: {
+            "Content-Type": "application/json; charset= UTF-8",
+          },
+        }
+      );
       const data = await response.json();
       return data;
     } catch (error) {
@@ -74,7 +84,7 @@ export const editPost = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const response = await fetch(
-        `http://localhost:5005/posts/${element.id}`,
+        `https://my-json-server.typicode.com/DanaMedany/crud-redux-router-json-server/posts/${element.id}`,
         {
           method: "PATCH",
           body: JSON.stringify(element),
