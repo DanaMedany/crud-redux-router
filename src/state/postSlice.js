@@ -24,7 +24,7 @@ export const detailPost = createAsyncThunk(
 
     try {
       const response = await fetch(
-        `https://my-json-server.typicode.com/DanaMedany/crud-redux-router-json-server/posts${id}`
+        `https://my-json-server.typicode.com/DanaMedany/crud-redux-router-json-server/posts/${id}`
       );
       const data = await response.json();
       return data;
@@ -40,7 +40,7 @@ export const deletePost = createAsyncThunk(
     const { rejectWithValue } = ThunkAPI;
     try {
       await fetch(
-        `https://my-json-server.typicode.com/DanaMedany/crud-redux-router-json-server/posts${id}`,
+        `https://my-json-server.typicode.com/DanaMedany/crud-redux-router-json-server/posts/${id}`,
         {
           method: "DELETE",
         }
